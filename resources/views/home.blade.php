@@ -44,6 +44,8 @@
 
     <!-- JavaScript Libraries -->
     @include('Components.js')
+
+    @yield('js')
 </body>
 
 </html>

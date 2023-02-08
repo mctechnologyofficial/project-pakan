@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
-class TransaksiController extends Controller
+class IndoTransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -47,9 +46,7 @@ class TransaksiController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-
-        return view('landing.brunei.transaction', compact(['product']));
+        //
     }
 
     /**

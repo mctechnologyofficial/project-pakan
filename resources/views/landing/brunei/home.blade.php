@@ -8,30 +8,20 @@
             <h1 class="mb-5">Our Dairy Products For Healthy Living</h1>
         </div>
         <div class="row gx-4">
-            <div class="col-md-6 col-lg-6 col-xl-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="product-item">
-                    <div class="position-relative">
-                        <img class="img-fluid" src="{{ asset('landing/img/product-3.jpg') }}" alt="">
-                    </div>
-                    <div class="text-center p-4">
-                        <a class="d-block h5" href="">Dairy Products</a>
-                        <span class="text-primary me-1">$19.00</span><br><br>
-                        <button type="submit" class="btn btn-primary">Buy!</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="product-item">
-                    <div class="position-relative">
-                        <img class="img-fluid" src="{{ asset('landing/img/product-4.jpg') }}" alt="">
-                    </div>
-                    <div class="text-center p-4">
-                        <a class="d-block h5" href="">Organic Food</a>
-                        <span class="text-primary me-1">$19.00</span><br><br>
-                        <button type="submit" class="btn btn-primary">Buy!</button>
+            @foreach ($product as $data)
+                <div class="col-md-6 col-lg-6 col-xl-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="{{ $data->image == null ? asset('landing/img/product-3.jpg') : asset($data->image) }}" alt="">
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">{{ $data->name }}</a>
+                            <span class="text-primary me-1">{{ $data->price }}</span><br><br>
+                            <a href="{{ route('product.show', $data->id) }}" class="btn btn-primary">Buy</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
