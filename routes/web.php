@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
-    return view('auth.login');
+    return view('auth.credential');
 });
 
 // force logout routes, temporary for debugging
