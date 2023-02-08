@@ -27,7 +27,7 @@ Route::get('/force/logout', function (Request $request) {
     return redirect()->route('login');
 });
 
-Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Auth::routes();
 

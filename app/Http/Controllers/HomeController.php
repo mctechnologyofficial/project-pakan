@@ -26,5 +26,11 @@ class HomeController extends Controller
         if($request->user()->hasRole('Super Admin')){
             return view('home');
         }
+        else if($request->user()->country == "Indonesia"){
+            return view('landing.indo.home');
+        }
+        else if($request->user()->country == "Brunei Darussalam"){
+            return view('landing.brunei.home');
+        }
     }
 }

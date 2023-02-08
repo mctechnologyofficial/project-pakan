@@ -24,6 +24,7 @@ class UserRoleSedeer extends Seeder
             'remember_token'        => Str::random(100),
             'created_at'            => Carbon::now(),
             'updated_at'            => Carbon::now(),
+            'country'               => 'Indonesia'
         ];
 
         $user = User::create(array_merge([
