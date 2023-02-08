@@ -28,7 +28,8 @@ class HomeController extends Controller
             return view('home');
         }
         else if($request->user()->country == "Indonesia"){
-            return view('landing.indo.home');
+            $product = Product::where('country', 'Indonesia')->get();
+            return view('landing.indo.home', compact(['product']));
         }
         else if($request->user()->country == "Brunei Darussalam"){
             $product = Product::where('country', 'Brunei Darussalam')->get();

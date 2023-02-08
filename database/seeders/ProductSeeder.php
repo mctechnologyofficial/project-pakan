@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         Product::create([
-            'name'          => 'product1',
+            'name'          => 'product indonesia',
             'price'         => '99999999',
             'description'   => 'oke',
             'image'         => null,
@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'name'          => 'product2',
+            'name'          => 'product brunei',
             'price'         => '99999999',
             'description'   => 'oke',
             'image'         => null,

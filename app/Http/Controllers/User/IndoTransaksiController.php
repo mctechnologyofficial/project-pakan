@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class IndoTransaksiController extends Controller
 {
@@ -35,7 +38,42 @@ class IndoTransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $transaction = Transaction::selectRaw('products.id, transactions.total_price, transactions.status, products.name, products.image')->where('user_id', Auth::user()->id)
+        // ->join('products', 'transactions.product_id', '=', 'products.id')
+        // ->get();
+
+        $transaksi = Transaction::create([
+            'product_id'        => $request->productid,
+            'user_id'           => Auth::user()->id,
+            'qty'               => $request->qty,
+            'status'            => 'Unpaid',
+            'total_price'       => $request->totalprice
+        ]);
+
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id'      => $transaksi->id,
+                'product_id'    => $request->productid,
+                'user_id'       => Auth::user()->id,
+                'gross_amount'  => $transaksi->total_price,
+            ),
+            'customer_details' => array(
+                'first_name' => Auth::user()->id,
+                'phone' => Auth::user()->email,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        return redirect()->route('transaction.store');
     }
 
     /**
@@ -46,7 +84,8 @@ class IndoTransaksiController extends Controller
      */
     public function show($id)
     {
-        //
+        $productIndo = Product::find($id);
+        return view('landing.indo.home', compact('productIndo'));
     }
 
     /**
