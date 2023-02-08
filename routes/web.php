@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SuperAdmin\UserController;
+use App\Http\Controllers\User\IndoTransaksiController;
 use App\Http\Controllers\User\TransaksiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard.content');
+})->name('dashboard.index');
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -45,6 +51,17 @@ Route::group(['middleware' => ['role:User']], function () {
         Route::get('/invoice', 'invoice')->name('transaction.invoice');
         Route::get('/{id}/invoice', 'detailinvoice')->name('transaction.detailinvoice');
         Route::put('/{id}/invoice', 'update')->name('transaction.updateinvoice');
+    });
+
+    // Transaksi indo
+    // Route::controller(IndoTransaksiController::class)->group(function() {
+    //     Route::post('/store/transaction', 'store')->name('transaction.store');
+    // });
+});
+
+Route::group(['middleware' => ['role:Super Admin']], function () {
+    Route::controller(UserController::class)->group(function(){
+        Route::get('/user', 'index')->name('superadmin.user.index');
     });
 });
 

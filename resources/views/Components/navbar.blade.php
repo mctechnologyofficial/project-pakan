@@ -7,7 +7,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="{{ route('home') }}" class="nav-item nav-link {{ Route::currentRouteNamed('homoe') ? 'active' : '' }}">Home</a>
+            <a href="{{ route('home') }}" class="nav-item nav-link {{ Route::currentRouteNamed('home') ? 'active' : '' }}">Home</a>
             <a href="{{ route('transaction.invoice') }}" class="nav-item nav-link {{ Route::currentRouteNamed('transaction.*') ? 'active' : '' }}">Invoice</a>
             <a href="service.html" class="nav-item nav-link">Services</a>
             <a href="product.html" class="nav-item nav-link">Products</a>

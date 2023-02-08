@@ -25,12 +25,16 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if($request->user()->hasRole('Super Admin')){
-            return view('home');
+            return redirect()->route('dashboard.index');
         }
-        else if($request->user()->country == "Indonesia"){
-            return view('landing.indo.home');
+        if($request->user()->hasRole('Admin')){
+            return redirect()->route('dashboard.index');
         }
-        else if($request->user()->country == "Brunei Darussalam"){
+        else if($request->user()->hasRole('User') && $request->user()->country == "Indonesia"){
+            $product = Product::where('country', 'Indonesia')->get();
+            return view('landing.indo.home', compact(['product']));
+        }
+        else if($request->user()->hasRole('User') && $request->user()->country == "Brunei Darussalam"){
             $product = Product::where('country', 'Brunei Darussalam')->get();
             return view('landing.brunei.home', compact(['product']));
         }
