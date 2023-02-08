@@ -20,6 +20,15 @@ class ProductSeeder extends Seeder
             'price'         => '99999999',
             'description'   => 'oke',
             'image'         => null,
+            'country'       => 'Indonesia',
+        ]);
+
+        Product::create([
+            'name'          => 'product2',
+            'price'         => '99999999',
+            'description'   => 'oke',
+            'image'         => null,
+            'country'       => 'Brunei Darussalam',
         ]);
     }
 }

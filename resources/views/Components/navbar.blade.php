@@ -21,7 +21,16 @@
                     <a href="404.html" class="dropdown-item">404 Page</a>
                 </div>
             </div>
-            <a href="{{ route('login') }}" class="nav-item nav-link">Login</a>
+            @guest
+                <a href="{{ route('login') }}" class="nav-item nav-link">Login</a>
+            @endguest
+            @auth
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <a href="javascript:void(0)" class="nav-item nav-link" id="hreflogout">Logout</a>
+                    <button type="submit" class="d-none" id="logout"></button>
+                </form>
+            @endauth
         </div>
         <div class="border-start ps-4 d-none d-lg-block">
             <button type="button" class="btn btn-sm p-0"><i class="fa fa-search"></i></button>

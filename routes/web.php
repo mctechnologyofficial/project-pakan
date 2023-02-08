@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\TransaksiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,5 +35,9 @@ Route::get('/force/logout', function (Request $request) {
 // Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::controller(TransaksiController::class)->group(function(){
+    Route::get('/{id}/transaction', 'show')->name('product.show');
+});
 
 Auth::routes();
