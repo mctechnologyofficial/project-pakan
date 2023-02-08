@@ -4,7 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\TryCatch;
 
 class TransaksiController extends Controller
 {
@@ -36,7 +39,44 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $transaction = Transaction::create([
+            'product_id'        => $request->productid,
+            'user_id'           => Auth::user()->id,
+            'qty'               => $request->qty,
+            'status'            => 'Unpaid',
+            'total_price'       => $request->totalprice
+        ]);
+
+        return redirect()->route('transaction.invoice')->with('success', 'Transaction successfully!');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function invoice()
+    {
+        $transaction = Transaction::selectRaw('transactions.id, transactions.total_price, transactions.status, products.name, products.image')->where('user_id', Auth::user()->id)
+        ->join('products', 'transactions.product_id', '=', 'products.id')
+        ->get();
+
+        return view('landing.brunei.invoice', compact(['transaction']));
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function detailinvoice($id)
+    {
+        $transaction = Transaction::find($id);
+
+        return view('landing.brunei.detailinvoice', compact(['transaction']));
     }
 
     /**

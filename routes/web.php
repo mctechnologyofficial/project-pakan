@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
-    return view('auth.credential');
+    return view('auth.login');
 });
 
 // force logout routes, temporary for debugging
@@ -36,8 +36,15 @@ Route::get('/force/logout', function (Request $request) {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::controller(TransaksiController::class)->group(function(){
-    Route::get('/{id}/transaction', 'show')->name('product.show');
+Route::group(['middleware' => ['role:User']], function () {
+
+    // Transaction & Invoice Routes
+    Route::controller(TransaksiController::class)->group(function(){
+        Route::get('/{id}/transaction', 'show')->name('product.show');
+        Route::post('/store/transaction', 'store')->name('transaction.store');
+        Route::get('/invoice', 'invoice')->name('transaction.invoice');
+        Route::get('/{id}/invoice', 'detailinvoice')->name('transaction.detailinvoice');
+    });
 });
 
 Auth::routes();
