@@ -11,7 +11,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('transaction.store') }}" method="post">
+                            <form action="{{ route('store') }}" method="post">
                                 @csrf
                                 <div class="mb-3 text-center">
                                     <img src="{{ $product->image == null ? asset('landing/img/product-3.jpg') : asset($product->image) }}" alt="image" class="img-thumbnail w-25">

@@ -51,11 +51,11 @@ Route::group(['middleware' => ['role:User']], function () {
         Route::get('/{id}/invoice', 'detailinvoice')->name('transaction.detailinvoice');
     });
 
-    // Transaksi indo
-    // Route::controller(IndoTransaksiController::class)->group(function() {
-    //     Route::post('/store/transaction', 'store')->name('transaction.store');
-    // });
-});
+    Route::controller(IndoTransaksiController::class)->group(function() {
+        Route::get('/{id}/transaksi', 'show')->name('produk');
+        Route::post('/store', 'store')->name('store');
+    });
 
+});
 
 Auth::routes();
