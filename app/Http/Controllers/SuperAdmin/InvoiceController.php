@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Invoice;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::role('Admin')->get();
-        return view('dashboard.super-admin.user.list', compact(['user']));
+        $invoice = Invoice::selectRaw('invoices.*, transactions.status')
+        ->join('transactions', 'transactions.id', '=', 'invoices.transaction_id')
+        ->get();
+
+        return view('dashboard.super-admin.validate-transaction.list', compact(['invoice']));
     }
 
     /**
@@ -27,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('dashboard.super-admin.user.add');
+        //
     }
 
     /**
@@ -38,17 +41,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create([
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'password'  => Hash::make($request->password),
-            'country'   => $request->country
-        ]);
-
-        // assign role
-        $user->assignRole('Admin');
-
-        return redirect()->route('superadmin.user.index')->with('success', 'User has been created successfully!');
+        //
     }
 
     /**
@@ -59,7 +52,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $payment = Invoice::find($id);
+
+        return view('dashboard.super-admin.validate-transaction.detail', compact(['payment']));
     }
 
     /**
@@ -82,7 +77,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $invoice = Invoice::find($id);
+
+        if (isset($_POST['btnaccept'])) {
+            $transaction = Transaction::where('id', $invoice->transaction_id)->update([
+                'status'    => 'Accepted',
+            ]);
+
+            return redirect()->route('superadmin.proofpayment.index');
+        } else {
+            $transaction = Transaction::where('id', $invoice->transaction_id)->update([
+                'status'    => 'Rejected',
+            ]);
+
+            return redirect()->route('superadmin.proofpayment.index');
+        }
     }
 
     /**
@@ -93,9 +102,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-
-        return redirect()->route('superadmin.user.index')->with('success', 'User has been deleted successfully!');
+        //
     }
 }

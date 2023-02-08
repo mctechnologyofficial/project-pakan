@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SuperAdmin\InvoiceController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\User\IndoTransaksiController;
 use App\Http\Controllers\User\TransaksiController;
@@ -52,16 +53,23 @@ Route::group(['middleware' => ['role:User']], function () {
         Route::get('/{id}/invoice', 'detailinvoice')->name('transaction.detailinvoice');
         Route::put('/{id}/invoice', 'update')->name('transaction.updateinvoice');
     });
-
-    // Transaksi indo
-    // Route::controller(IndoTransaksiController::class)->group(function() {
-    //     Route::post('/store/transaction', 'store')->name('transaction.store');
-    // });
 });
 
 Route::group(['middleware' => ['role:Super Admin']], function () {
-    Route::controller(UserController::class)->group(function(){
-        Route::get('/user', 'index')->name('superadmin.user.index');
+    Route::prefix('dashboard')->group(function(){
+
+        Route::controller(UserController::class)->group(function(){
+            Route::get('/user', 'index')->name('superadmin.user.index');
+            Route::get('/user/create', 'create')->name('superadmin.user.create');
+            Route::post('/user/store', 'store')->name('superadmin.user.store');
+            Route::delete('/user/destroy/{id}', 'destroy')->name('superadmin.user.destroy');
+        });
+
+        Route::controller(InvoiceController::class)->group(function(){
+            Route::get('/proof-payment', 'index')->name('superadmin.proofpayment.index');
+            Route::get('/proof-payment/{id}', 'show')->name('superadmin.proofpayment.show');
+            Route::put('/proof-payment/{id}', 'update')->name('superadmin.proofpayment.update');
+        });
     });
 });
 

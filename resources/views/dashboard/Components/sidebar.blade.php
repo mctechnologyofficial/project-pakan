@@ -15,6 +15,12 @@
                     <i class="bi bi-person"></i><span>Users</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('superadmin.proofpayment.index') }}">
+                    <i class="bi bi-list-check"></i><span>Proof of Payment</span>
+                </a>
+            </li>
         @endrole
 
     </ul>
