@@ -16,19 +16,35 @@ class ProductSeeder extends Seeder
     public function run()
     {
         Product::create([
-            'name'          => 'product1',
-            'price'         => '99999999',
+            'name'          => 'Brunei 1',
+            'price'         => '50000',
+            'description'   => 'mantapp tenannnnn',
+            'image'         => '/storage/product/me.jpeg',
+            'country'       => 'Brunei Darussalam',
+        ]);
+
+        Product::create([
+            'name'          => 'Brunei 2',
+            'price'         => '150000',
             'description'   => 'oke',
-            'image'         => null,
+            'image'         => '/storage/product/q.jpg',
+            'country'       => 'Brunei Darussalam',
+        ]);
+
+        Product::create([
+            'name'          => 'Indonesia 1',
+            'price'         => '50000',
+            'description'   => 'mantapp tenannnnn',
+            'image'         => '/storage/product/me.jpeg',
             'country'       => 'Indonesia',
         ]);
 
         Product::create([
-            'name'          => 'product2',
-            'price'         => '99999999',
+            'name'          => 'Indonesia 2',
+            'price'         => '150000',
             'description'   => 'oke',
-            'image'         => null,
-            'country'       => 'Brunei Darussalam',
+            'image'         => '/storage/product/q.jpg',
+            'country'       => 'Indonesia',
         ]);
     }
 }

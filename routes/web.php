@@ -44,6 +44,7 @@ Route::group(['middleware' => ['role:User']], function () {
         Route::post('/store/transaction', 'store')->name('transaction.store');
         Route::get('/invoice', 'invoice')->name('transaction.invoice');
         Route::get('/{id}/invoice', 'detailinvoice')->name('transaction.detailinvoice');
+        Route::put('/{id}/invoice', 'update')->name('transaction.updateinvoice');
     });
 });
 

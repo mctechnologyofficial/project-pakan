@@ -11,8 +11,8 @@
             @foreach ($product as $data)
                 <div class="col-md-6 col-lg-6 col-xl-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="{{ $data->image == null ? asset('landing/img/product-3.jpg') : asset($data->image) }}" alt="">
+                        <div class="text-center">
+                            <img class="img-thumbnail w-75" src="{{ $data->image == null ? asset('landing/img/product-3.jpg') : asset($data->image) }}" alt="">
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">{{ $data->name }}</a>
