@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::role('Admin')->get();
-        return view('dashboard.super-admin.user.list', compact(['user']));
+        //
     }
 
     /**
@@ -27,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('dashboard.super-admin.user.add');
+        //
     }
 
     /**
@@ -38,17 +35,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create([
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'password'  => Hash::make($request->password),
-            'country'   => $request->country
-        ]);
-
-        // assign role
-        $user->assignRole('Admin');
-
-        return redirect()->route('user-list')->with('success', 'User has been created successfully!');
+        //
     }
 
     /**
@@ -93,9 +80,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-
-        return redirect()->route('user-list')->with('success', 'User has been deleted successfully!');
+        //
     }
 }

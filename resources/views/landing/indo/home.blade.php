@@ -8,7 +8,7 @@
             <h1 class="mb-5">Our Dairy Products For Healthy Living</h1>
         </div>
         <div class="row gx-4">
-            @foreach ($product as $data)
+            @foreach ($productIndo as $data)
                 <div class="col-md-6 col-lg-6 col-xl-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="product-item">
                         <div class="position-relative">

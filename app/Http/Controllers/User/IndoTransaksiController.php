@@ -26,12 +26,7 @@ class IndoTransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function invoice($id)
-    {
-        $transaksi = Transaction::find($id);
-        $product = Product::find($transaksi->product_id);
-        return view('landing.indo.invoice', compact(['transaksi', 'product']));
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -89,7 +84,21 @@ class IndoTransaksiController extends Controller
 
         Session::put('snapToken', $snapToken);
 
-        return redirect()->route('invoice.indo', $transaksi->id);
+        return redirect()->route('invoice-indo', $transaksi->id);
+    }
+
+    // public function invoice($id)
+    // {
+    //     $transaksi = Transaction::find($id);
+    //     $product = Product::find($transaksi->product_id);
+    //     return view('landing.indo.invoice', compact(['transaksi', 'product']));
+    // }
+
+    public function invoice($id)
+    {
+        $transaksi = Transaction::find($id);
+        $productIndo = Product::find($transaksi->product_id);
+        return view('landing.indo.invoice', compact(['transaksi', 'productIndo']));
     }
 
     /**

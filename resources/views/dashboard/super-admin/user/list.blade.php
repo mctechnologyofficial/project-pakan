@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="card info-card">
                     <div class="card-title text-end px-4 pb-0 pt-4">
-                        <a href="{{ route('superadmin.user.create') }}" class="btn btn-outline-success">+ Add new user</a>
+                        <a href="{{ route('user-create') }}" class="btn btn-outline-success">+ Add new user</a>
                     </div>
                     <div class="card-body pt-4 pb-0">
                         <table class="table table-bordered table-hover">
@@ -27,7 +27,7 @@
                                         <td valign="middle">{{ $data->email }}</td>
                                         <td valign="middle">{{ $data->country }}</td>
                                         <td valign="middle" class="d-grid gap-2">
-                                            <form action="{{ route('superadmin.user.destroy', $data->id) }}" method="post" class="d-grid">
+                                            <form action="{{ route('user-destroy', $data->id) }}" method="post" class="d-grid">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-outline-danger btn-block">Delete</button>

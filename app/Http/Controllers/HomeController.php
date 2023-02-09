@@ -31,8 +31,8 @@ class HomeController extends Controller
             return redirect()->route('dashboard.index');
         }
         else if($request->user()->hasRole('User') && $request->user()->country == "Indonesia"){
-            $product = Product::where('country', 'Indonesia')->get();
-            return view('landing.indo.home', compact(['product']));
+            $productIndo = Product::where('country', 'Indonesia')->get();
+            return view('landing.indo.home', compact(['productIndo']));
         }
         else if($request->user()->hasRole('User') && $request->user()->country == "Brunei Darussalam"){
             $product = Product::where('country', 'Brunei Darussalam')->get();

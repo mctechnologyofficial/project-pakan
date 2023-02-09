@@ -6,26 +6,26 @@
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                    <img class="w-100" src="{{ asset('landing/img/carousel-1.jpg') }}" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-lg-8 text-start">
-                                    <p class="fs-4 text-white">Welcome to our dairy farm</p>
+                                    <p class="fs-4 text-white">Welcome to MahirFarm</p>
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">The Farm of Dairy products</h1>
-                                    <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">Explore More</a>
+                                    <a href="{{ route('register') }}" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">Explore More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                    <img class="w-100" src="{{ asset('landing/img/carousel-2.jpg') }}" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-end">
                                 <div class="col-lg-8 text-end">
-                                    <p class="fs-4 text-white">Welcome to our dairy farm</p>
+                                    <p class="fs-4 text-white">Welcome to MahirFarm</p>
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">Best Organic Dairy Products</h1>
                                     <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInLeft">Explore More</a>
                                 </div>
@@ -62,13 +62,13 @@
                             </div>
                         </div>
                         <div class="col-6 wow fadeIn" data-wow-delay="0.1s">
-                            <img class="img-fluid rounded" src="img/service-1.jpg">
+                            <img class="img-fluid rounded" src="{{ asset('landing/img/service-1.jpg') }}">
                         </div>
                         <div class="col-6 wow fadeIn" data-wow-delay="0.3s">
-                            <img class="img-fluid rounded" src="img/service-2.jpg">
+                            <img class="img-fluid rounded" src="{{ asset('landing/img/service-2.jpg') }}">
                         </div>
                         <div class="col-6 wow fadeIn" data-wow-delay="0.5s">
-                            <img class="img-fluid rounded" src="img/service-3.jpg">
+                            <img class="img-fluid rounded" src="{{ asset('landing/img/service-3.jpg') }}">
                         </div>
                     </div>
                 </div>
@@ -78,12 +78,12 @@
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                     <div class="row g-5 pt-2 mb-5">
                         <div class="col-sm-6">
-                            <img class="img-fluid mb-4" src="img/service.png" alt="">
+                            <img class="img-fluid mb-4" src="{{ asset('landing/img/service.png') }}" alt="">
                             <h5 class="mb-3">Dedicated Services</h5>
                             <span>Clita erat ipsum et lorem et sit, sed stet lorem sit clita</span>
                         </div>
                         <div class="col-sm-6">
-                            <img class="img-fluid mb-4" src="img/product.png" alt="">
+                            <img class="img-fluid mb-4" src="{{ asset('landing/img/product.png') }}" alt="">
                             <h5 class="mb-3">Organic Products</h5>
                             <span>Clita erat ipsum et lorem et sit, sed stet lorem sit clita</span>
                         </div>
@@ -114,28 +114,28 @@
                         <div class="row g-0">
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="text-center bg-primary py-5 px-4">
-                                    <img class="img-fluid mb-4" src="img/experience.png" alt="">
+                                    <img class="img-fluid mb-4" src="{{ asset('landing/img/experience.png') }}" alt="">
                                     <h1 class="display-6 text-white" data-toggle="counter-up">25</h1>
                                     <span class="fs-5 fw-semi-bold text-secondary">Years Experience</span>
                                 </div>
                             </div>
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
                                 <div class="text-center bg-secondary py-5 px-4">
-                                    <img class="img-fluid mb-4" src="img/award.png" alt="">
+                                    <img class="img-fluid mb-4" src="{{ asset('landing/img/award.png') }}" alt="">
                                     <h1 class="display-6" data-toggle="counter-up">183</h1>
                                     <span class="fs-5 fw-semi-bold text-primary">Award Winning</span>
                                 </div>
                             </div>
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="text-center bg-secondary py-5 px-4">
-                                    <img class="img-fluid mb-4" src="img/animal.png" alt="">
+                                    <img class="img-fluid mb-4" src="{{ asset('landing/img/animal.png') }}" alt="">
                                     <h1 class="display-6" data-toggle="counter-up">2619</h1>
                                     <span class="fs-5 fw-semi-bold text-primary">Total Animals</span>
                                 </div>
                             </div>
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.7s">
                                 <div class="text-center bg-primary py-5 px-4">
-                                    <img class="img-fluid mb-4" src="img/client.png" alt="">
+                                    <img class="img-fluid mb-4" src="{{ asset('landing/img/client.png') }}" alt="">
                                     <h1 class="display-6 text-white" data-toggle="counter-up">51940</h1>
                                     <span class="fs-5 fw-semi-bold text-secondary">Happy Clients</span>
                                 </div>

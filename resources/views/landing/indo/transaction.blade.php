@@ -19,7 +19,7 @@
                                 <div class="mb-3">
                                     <input type="hidden" name="productid" value="{{ $productIndo->id }}">
                                     <label for="exampleFormControlInput1" class="form-label">Product Name</label>
-                                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" value="{{ $productIndo->name }}" />
+                                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" readonly value="{{ $productIndo->name }}" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Product Price</label>
@@ -38,7 +38,8 @@
                                     <input type="text" name="totalprice" class="form-control total" id="exampleFormControlInput1" readonly />
                                 </div>
 
-                                <input type="submit" value="Transaction" class="btn btn-primary" />
+                                <button type="submit" class="btn btn-primary">Transaksi</button>
+                                {{-- <input type="submit" value="Transaction" class="btn btn-primary" /> --}}
                             </form>
                         </div>
                     </div>

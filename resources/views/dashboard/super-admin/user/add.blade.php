@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="card info-card">
                     <div class="card-body pt-4 pb-0">
-                        <form action="{{ route('superadmin.user.store') }}" method="post">
+                        <form action="{{ route('user-store') }}" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Name</label>

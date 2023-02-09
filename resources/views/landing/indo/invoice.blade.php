@@ -28,7 +28,7 @@
                             <tbody>
                                 <tr>
                                     <td>{{ Auth::user()->name }}</td>
-                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $productIndo->name }}</td>
                                     <td>{{ $transaksi->total_price }}</td>
                                 </tr>
                             </tbody>

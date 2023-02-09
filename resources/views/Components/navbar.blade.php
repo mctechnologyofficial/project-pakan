@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5">
     <a href="index.html" class="navbar-brand d-flex align-items-center">
-        <h1 class="m-0">Milky</h1>
+        <img src="{{ asset('landing/img/logobener.png') }}" width="130" alt="">
     </a>
     <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
