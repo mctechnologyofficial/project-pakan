@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="card info-card">
                     <div class="card-body pt-4 pb-0">
-                        <form action="{{ route('superadmin.proofpayment.update', $payment->id) }}" method="post">
+                        <form action="{{ route('proofpayment.update', $payment->id) }}" method="post">
                             @csrf
                             @method('put')
                             <div class="mb-3">

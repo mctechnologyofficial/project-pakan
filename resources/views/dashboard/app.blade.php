@@ -12,12 +12,7 @@
   <!-- Favicons -->
   @include('dashboard.Components.css')
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin - v2.5.0
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  @yield('css')
 </head>
 
 <body>
@@ -55,6 +50,7 @@
   <!-- Vendor JS Files -->
   @include('dashboard.Components.js')
 
+  @yield('js')
 </body>
 
 </html>
