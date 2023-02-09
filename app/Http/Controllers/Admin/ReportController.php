@@ -16,13 +16,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $report = Report::selectRaw('users.name, products.name, reports.id, reports.name_admin')
-            ->join('products', 'products.id', '=', 'reports.product_id')
-            ->leftJoin('users', 'users.id', '=', 'products.user_id')
-            ->get();
-
-        $transaksi = 
-        return view('dashboard.admin.report', compact(['report', 'user']));
+        return view('dashboard.admin.report');
     }
 
     /**

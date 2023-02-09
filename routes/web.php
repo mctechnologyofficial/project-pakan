@@ -62,7 +62,7 @@ Route::group(['middleware' => ['role:User']], function () {
         Route::post('/store/transaksi', 'store')->name('store');
     });
 });
-
+ 
 
 Route::group(['middleware' => ['role:Super Admin']], function() {
     Route::controller(UserController::class)->group(function() {
