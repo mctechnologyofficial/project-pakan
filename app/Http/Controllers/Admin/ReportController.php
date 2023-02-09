@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Report;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Transaction;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -16,7 +18,17 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('dashboard.admin.report');
+        $report = Transaction::selectRaw('users.id, users.name as username, products.name as productname')
+        ->join('users', 'users.id', '=', 'transactions.user_id')
+        ->join('products', 'products.id', '=', 'transactions.product_id')
+        ->where(function($query){
+            $query->where('transactions.status', 'Paid')
+            ->orWhere('transactions.status', 'Accepted');
+        })
+        ->get();
+
+        // $transaksi =
+        return view('dashboard.admin.report', compact(['report']));
     }
 
     /**
@@ -37,7 +49,17 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file('image');
+        $filename = sprintf('%s_%s.%s', date('Y-m-d'), md5(microtime(true)), $file->extension());
+        $image_path = $file->move('storage/report', $filename);
+
+        Report::create([
+            'user_id'       => $request->userid,
+            'admin_name'    => Auth::user()->name,
+            'image'         => $image_path
+        ]);
+
+        return redirect()->route('report.index')->with('success', 'Report has been submitted succesfully!');
     }
 
     /**
@@ -46,9 +68,13 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $report = Report::selectRaw('users.name, reports.*')
+        ->join('users', 'users.id', '=', 'reports.user_id')
+        ->get();
+
+        return view('dashboard.admin.history', compact(['report']));
     }
 
     /**

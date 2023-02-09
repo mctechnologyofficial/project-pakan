@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('landing');
 
 Route::get('/dashboard', function () {
     return view('dashboard.content');
@@ -65,22 +65,30 @@ Route::group(['middleware' => ['role:User']], function () {
  
 
 Route::group(['middleware' => ['role:Super Admin']], function() {
-    Route::controller(UserController::class)->group(function() {
-        Route::get('/user/list', 'index')->name('user-list');
-        Route::get('/user/create', 'create')->name('user-create');
-        Route::post('/user/store', 'store')->name('user-store');
-        Route::delete('/user/destroy', 'destroy')->name('user-destroy');
-    });
+    Route::prefix('dashboard')->group(function(){
+        Route::controller(UserController::class)->group(function() {
+            Route::get('/user', 'index')->name('user.index');
+            Route::get('/user/create', 'create')->name('user.create');
+            Route::post('/user/store', 'store')->name('user.store');
+            Route::delete('/user/destroy', 'destroy')->name('user.destroy');
+        });
 
-    Route::controller(InvoiceController::class)->group(function() {
-        Route::get('/proofpayment/index', 'index')->name('superadmin.proofpayment.index');
+        Route::controller(InvoiceController::class)->group(function() {
+            Route::get('/proofpayment', 'index')->name('proofpayment.index');
+            Route::get('/{id}/proofpayment', 'show')->name('proofpayment.show');
+            Route::put('/{id}/proofpayment', 'update')->name('proofpayment.update');
+        });
     });
 });
 
 Route::group(['middleware' => ['role:Admin']], function() {
+    Route::prefix('dashboard')->group(function(){
         Route::controller(ReportController::class)->group(function() {
-            Route::get('/report/list', 'index')->name('report-list');
+            Route::get('/report', 'index')->name('report.index');
+            Route::post('/report/store', 'store')->name('report.store');
+            Route::get('/history', 'show')->name('report.show');
         });
+    });
 });
 
 Auth::routes();

@@ -11,13 +11,13 @@
 
         @role('Super Admin')
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('user-list') }}">
+                <a class="nav-link collapsed" href="{{ route('user.index') }}">
                     <i class="bi bi-person"></i><span>Users</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('superadmin.proofpayment.index') }}">
+                <a class="nav-link collapsed" href="{{ route('proofpayment.index') }}">
                     <i class="bi bi-list-check"></i><span>Proof of Payment</span>
                 </a>
             </li>
@@ -25,14 +25,14 @@
 
         @role('Admin')
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('report-list') }}">
-                    <i class="bi bi-person"></i><span>Report</span>
+                <a class="nav-link collapsed" href="{{ route('report.index') }}">
+                    <i class="bi bi-file-bar-graph"></i><span>Report</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
-                    <i class="bi bi-list-check"></i><span>Proof of Payment</span>
+                <a class="nav-link collapsed" href="{{ route('report.show') }}">
+                    <i class="bi bi-clock-history"></i><span>History</span>
                 </a>
             </li>
         @endrole

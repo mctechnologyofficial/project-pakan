@@ -23,7 +23,7 @@
                                         </td>
                                         <td valign="middle" class="d-grid">
                                             @if ($data->status == "Waiting to be accepted")
-                                                <a href="{{ route('superadmin.proofpayment.show', $data->id) }}" class="btn btn-outline-info">Edit</a>
+                                                <a href="{{ route('proofpayment.show', $data->id) }}" class="btn btn-outline-info">Edit</a>
                                             @elseif ($data->status == "Rejected")
                                                 <a href="javascript:void(0)" class="btn btn-outline-danger">Rejected</a>
                                             @else
