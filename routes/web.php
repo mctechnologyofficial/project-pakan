@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SuperAdmin\InvoiceController;
+use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\User\IndoTransaksiController;
 use App\Http\Controllers\User\TransaksiController;
 use Illuminate\Http\Request;
@@ -22,8 +24,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard.konten');
-});
+    return view('dashboard.content');
+})->name('dashboard.index');
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -49,14 +51,14 @@ Route::group(['middleware' => ['role:User']], function () {
         Route::post('/store/transaction', 'store')->name('transaction.store');
         Route::get('/invoice', 'invoice')->name('transaction.invoice');
         Route::get('/{id}/invoice', 'detailinvoice')->name('transaction.detailinvoice');
+        Route::put('/{id}/invoice', 'update')->name('transaction.updateinvoice');
     });
 
-    Route::controller(IndoTransaksiController::class)->group(function() {
-        Route::get('/{id}/transaksi', 'show')->name('produk');
-        Route::get('/{id}/invoice-indo', 'invoice')->name('invoice.indo');
-        Route::post('/store', 'store')->name('store');
-    });
-
+    // Transaksi indo
+    // Route::controller(IndoTransaksiController::class)->group(function() {
+    //     Route::post('/store/transaction', 'store')->name('transaction.store');
+    // });
 });
+
 
 Auth::routes();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -75,8 +76,9 @@ class TransaksiController extends Controller
     public function detailinvoice($id)
     {
         $transaction = Transaction::find($id);
+        $product = Product::find($transaction->product_id);
 
-        return view('landing.brunei.detailinvoice', compact(['transaction']));
+        return view('landing.brunei.detailinvoice', compact(['transaction', 'product']));
     }
 
     /**
@@ -112,7 +114,20 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $file = $request->file('image');
+        $filename = sprintf('%s_%s.%s', date('Y-m-d'), md5(microtime(true)), $file->extension());
+        $image_path = $file->move('storage/invoice', $filename);
+
+        Invoice::create([
+            'transaction_id'    => $id,
+            'file'              => $image_path
+        ]);
+
+        Transaction::where('id', $id)->update([
+            'status'        => 'Waiting to be accepted'
+        ]);
+
+        return redirect()->route('transaction.invoice')->with('success', 'Detail invoice has been updated successfully!');
     }
 
     /**

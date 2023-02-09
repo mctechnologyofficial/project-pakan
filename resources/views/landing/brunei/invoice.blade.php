@@ -10,6 +10,12 @@
         @foreach ($transaction as $data)
         <div class="row gx-4 my-4">
             <div class="col-lg-12">
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ $message }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -29,6 +35,10 @@
                                     @if ($data->status == "Paid")
                                         <span class="badge bg-success mx-3">{{ $data->status }}</span>
                                     @elseif ($data->status == "Unpaid")
+                                        <span class="badge bg-secondary mx-3">{{ $data->status }}</span>
+                                    @elseif ($data->status == "Waiting to be accepted")
+                                        <span class="badge bg-warning mx-3">{{ $data->status }}</span>
+                                    @elseif ($data->status == "Rejected")
                                         <span class="badge bg-danger mx-3">{{ $data->status }}</span>
                                     @endif
                                 </div>
