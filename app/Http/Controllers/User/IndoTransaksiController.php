@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class IndoTransaksiController extends Controller
 {
@@ -18,6 +19,18 @@ class IndoTransaksiController extends Controller
     public function index()
     {
         //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function invoice($id)
+    {
+        $transaksi = Transaction::find($id);
+        $product = Product::find($transaksi->product_id);
+        return view('landing.indo.invoice', compact(['transaksi', 'product']));
     }
 
     /**
@@ -73,7 +86,10 @@ class IndoTransaksiController extends Controller
         );
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-        return redirect()->route('transaction.store');
+
+        Session::put('snapToken', $snapToken);
+
+        return redirect()->route('invoice.indo', $transaksi->id);
     }
 
     /**
@@ -85,7 +101,7 @@ class IndoTransaksiController extends Controller
     public function show($id)
     {
         $productIndo = Product::find($id);
-        return view('landing.indo.home', compact('productIndo'));
+        return view('landing.indo.transaction', compact(['productIndo']));
     }
 
     /**

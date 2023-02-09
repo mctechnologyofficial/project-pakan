@@ -17,7 +17,7 @@
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">{{ $data->name }}</a>
                             <span class="text-primary me-1">{{ $data->price }}</span><br><br>
-                            <a href="{{ route('product.show', $data->id) }}" class="btn btn-primary">Buy</a>
+                            <a href="{{ route('produk', $data->id) }}" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                 </div>

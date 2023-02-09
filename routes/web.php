@@ -53,6 +53,7 @@ Route::group(['middleware' => ['role:User']], function () {
 
     Route::controller(IndoTransaksiController::class)->group(function() {
         Route::get('/{id}/transaksi', 'show')->name('produk');
+        Route::get('/{id}/invoice-indo', 'invoice')->name('invoice.indo');
         Route::post('/store', 'store')->name('store');
     });
 
