@@ -21,6 +21,7 @@
                             <thead>
                                 <tr>
                                     <th>Nama</th>
+                                    <th>Customer Name</th>
                                     <th>Product</th>
                                     <th>Total Price</th>
                                 </tr>
@@ -28,6 +29,7 @@
                             <tbody>
                                 <tr>
                                     <td>{{ Auth::user()->name }}</td>
+                                    <td>{{ $transaksi->customer_name }}</td>
                                     <td>{{ $productIndo->name }}</td>
                                     <td>{{ $transaksi->total_price }}</td>
                                 </tr>

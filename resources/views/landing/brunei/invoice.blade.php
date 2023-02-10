@@ -32,7 +32,7 @@
 
                             <div class="col-lg-2">
                                 <div class="position-absolute top-0 end-0 my-3">
-                                    @if ($data->status == "Paid")
+                                    @if ($data->status == "Accepted")
                                         <span class="badge bg-success mx-3">{{ $data->status }}</span>
                                     @elseif ($data->status == "Unpaid")
                                         <span class="badge bg-secondary mx-3">{{ $data->status }}</span>

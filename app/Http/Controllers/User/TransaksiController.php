@@ -43,6 +43,7 @@ class TransaksiController extends Controller
         $transaction = Transaction::create([
             'product_id'        => $request->productid,
             'user_id'           => Auth::user()->id,
+            'customer_name'     => $request->customer_name,
             'qty'               => $request->qty,
             'status'            => 'Unpaid',
             'total_price'       => $request->totalprice
@@ -59,8 +60,9 @@ class TransaksiController extends Controller
      */
     public function invoice()
     {
-        $transaction = Transaction::selectRaw('transactions.id, transactions.total_price, transactions.status, products.name, products.image')->where('user_id', Auth::user()->id)
+        $transaction = Transaction::selectRaw('transactions.id, transactions.total_price, transactions.status, products.name, products.image')
         ->join('products', 'transactions.product_id', '=', 'products.id')
+        ->where('transactions.user_id', Auth::user()->id)
         ->get();
 
         return view('landing.brunei.invoice', compact(['transaction']));

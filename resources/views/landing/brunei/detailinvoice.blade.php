@@ -19,6 +19,10 @@
                                 <input type="text" name="transactionid" class="form-control" id="exampleFormControlInput1" readonly value="{{ $transaction->id }}" />
                             </div>
                             <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
+                                <input type="text" name="customer_name" class="form-control" id="exampleFormControlInput1" readonly value="{{ $transaction->customer_name }}" />
+                            </div>
+                            <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">User Name</label>
                                 <input type="text" name="username" class="form-control" id="exampleFormControlInput1" readonly value="{{ Auth::user()->name }}" />
                             </div>

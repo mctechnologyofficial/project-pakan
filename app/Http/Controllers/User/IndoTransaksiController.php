@@ -53,6 +53,7 @@ class IndoTransaksiController extends Controller
         $transaksi = Transaction::create([
             'product_id'        => $request->productid,
             'user_id'           => Auth::user()->id,
+            'customer_name'     => $request->customer_name,
             'qty'               => $request->qty,
             'status'            => 'Unpaid',
             'total_price'       => $request->totalprice

@@ -84,13 +84,13 @@ class InvoiceController extends Controller
                 'status'    => 'Accepted',
             ]);
 
-            return redirect()->route('superadmin.proofpayment.index');
+            return redirect()->route('proofpayment.index');
         } else {
             $transaction = Transaction::where('id', $invoice->transaction_id)->update([
                 'status'    => 'Rejected',
             ]);
 
-            return redirect()->route('superadmin.proofpayment.index');
+            return redirect()->route('proofpayment.index');
         }
     }
 

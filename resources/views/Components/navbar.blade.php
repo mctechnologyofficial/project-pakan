@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5">
     <a href="index.html" class="navbar-brand d-flex align-items-center">
-        <img src="{{ asset('landing/img/logobener.png') }}" width="130" alt="">
+        <img src="{{ asset('landing/img/logo.png') }}" width="130" alt="">
     </a>
     <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -9,8 +9,12 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="{{ route('home') }}" class="nav-item nav-link {{ Route::currentRouteNamed('home') ? 'active' : '' }}">Home</a>
             @auth
+                <a href="produk" class="nav-item nav-link">Produk</a>
                 <a href="{{ route('transaction.invoice') }}" class="nav-item nav-link {{ Route::currentRouteNamed('transaction.*') ? 'active' : '' }}">Invoice</a>
+                <a href="report" class="nav-item nav-link">Report</a>
+                <a href="kontak" class="nav-item nav-link">Support</a>
             @endauth
+            <a href="service.html" class="nav-item nav-link">About Us</a>
             <a href="service.html" class="nav-item nav-link">Services</a>
             <a href="product.html" class="nav-item nav-link">Products</a>
             <div class="nav-item dropdown">

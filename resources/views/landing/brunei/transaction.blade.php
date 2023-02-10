@@ -17,6 +17,10 @@
                                     <img src="{{ $product->image == null ? asset('landing/img/product-3.jpg') : asset($product->image) }}" alt="image" class="img-thumbnail w-25">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
+                                    <input type="text" name="customer_name" class="form-control" id="exampleFormControlInput1" />
+                                </div>
+                                <div class="mb-3">
                                     <input type="hidden" name="productid" value="{{ $product->id }}">
                                     <label for="exampleFormControlInput1" class="form-label">Product Name</label>
                                     <input type="text" name="name" class="form-control" id="exampleFormControlInput1" readonly value="{{ $product->name }}" />
