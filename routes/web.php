@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\SuperAdmin\InvoiceController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\User\IndoTransaksiController;
+use App\Http\Controllers\User\ReportController as UserReportController;
 use App\Http\Controllers\User\TransaksiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,6 +47,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => ['role:User']], function () {
 
+    // Report indo & brunei Routes
+    Route::controller(UserReportController::class)->group(function(){
+        Route::get('/report', 'index')->name('user.report.index');
+    });
+
     // Transaction & Invoice Routes
     Route::controller(TransaksiController::class)->group(function(){
         Route::get('/{id}/transaction', 'show')->name('product.show');
@@ -62,7 +68,7 @@ Route::group(['middleware' => ['role:User']], function () {
         Route::post('/store/transaksi', 'store')->name('store');
     });
 });
- 
+
 
 Route::group(['middleware' => ['role:Super Admin']], function() {
     Route::prefix('dashboard')->group(function(){

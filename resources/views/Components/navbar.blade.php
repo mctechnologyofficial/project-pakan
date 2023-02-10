@@ -11,23 +11,23 @@
             @auth
                 <a href="produk" class="nav-item nav-link">Produk</a>
                 <a href="{{ route('transaction.invoice') }}" class="nav-item nav-link {{ Route::currentRouteNamed('transaction.*') ? 'active' : '' }}">Invoice</a>
-                <a href="report" class="nav-item nav-link">Report</a>
+                <a href="{{ route('user.report.index') }}" class="nav-item nav-link">Report</a>
                 <a href="kontak" class="nav-item nav-link">Support</a>
             @endauth
-            <a href="service.html" class="nav-item nav-link">About Us</a>
-            <a href="service.html" class="nav-item nav-link">Services</a>
-            <a href="product.html" class="nav-item nav-link">Products</a>
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                <div class="dropdown-menu bg-light m-0">
-                    <a href="gallery.html" class="dropdown-item">Gallery</a>
-                    <a href="feature.html" class="dropdown-item">Features</a>
-                    <a href="team.html" class="dropdown-item">Our Team</a>
-                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                    <a href="404.html" class="dropdown-item">404 Page</a>
-                </div>
-            </div>
             @guest
+                <a href="service.html" class="nav-item nav-link">About Us</a>
+                <a href="service.html" class="nav-item nav-link">Services</a>
+                <a href="product.html" class="nav-item nav-link">Products</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        <a href="gallery.html" class="dropdown-item">Gallery</a>
+                        <a href="feature.html" class="dropdown-item">Features</a>
+                        <a href="team.html" class="dropdown-item">Our Team</a>
+                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="404.html" class="dropdown-item">404 Page</a>
+                    </div>
+                </div>
                 <a href="{{ route('login') }}" class="nav-item nav-link">Login</a>
             @endguest
             @auth
