@@ -11,7 +11,7 @@
             @foreach ($productIndo as $data)
                 <div class="col-md-6 col-lg-6 col-xl-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="product-item">
-                        <div class="position-relative text-center">
+                        <div class="position-relative text-center mt-4">
                             <img class="img-thumbnail w-50" src="{{ $data->image == null ? asset('landing/img/product-3.jpg') : asset($data->image) }}" alt="">
                         </div>
                         <div class="text-center p-4">
