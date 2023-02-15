@@ -1,346 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+      .background-radial-gradient {
+        background-color: hsl(218, 41%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(218, 41%, 35%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(218, 41%, 45%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%);
+      }
 
-* {
-	box-sizing: border-box;
-}
+      #radius-shape-1 {
+        height: 220px;
+        width: 220px;
+        top: -60px;
+        left: -130px;
+        background: radial-gradient(#44006b, #ad1fff);
+        overflow: hidden;
+      }
 
-body {
-	background: #f6f5f7;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
-}
+      #radius-shape-2 {
+        border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+        bottom: -60px;
+        right: -110px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(#44006b, #ad1fff);
+        overflow: hidden;
+      }
 
-h1 {
-	font-weight: bold;
-	margin: 0;
-}
-
-h2 {
-	text-align: center;
-}
-
-p {
-	font-size: 14px;
-	font-weight: 100;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
-}
-
-span {
-	font-size: 12px;
-}
-
-a {
-	color: #333;
-	font-size: 14px;
-	text-decoration: none;
-	margin: 15px 0;
-}
-
-button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
-}
-
-button:active {
-	transform: scale(0.95);
-}
-
-button:focus {
-	outline: none;
-}
-
-button.ghost {
-	background-color: transparent;
-	border-color: #FFFFFF;
-}
-
-form {
-	background-color: #FFFFFF;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
-	text-align: center;
-}
-
-input {
-	background-color: #eee;
-	border: none;
-	padding: 12px 15px;
-	margin: 8px 0;
-	width: 100%;
-}
-
-#country {
-	background-color: #eee;
-	border: none;
-	padding: 12px 15px;
-	margin: 8px 0;
-	width: 100%;
-}
-
-.container {
-	background-color: #fff;
-	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 480px;
-}
-
-.form-container {
-	position: absolute;
-	top: 0;
-	height: 100%;
-	transition: all 0.6s ease-in-out;
-}
-
-.sign-in-container {
-	left: 0;
-	width: 50%;
-	z-index: 2;
-}
-
-.container.right-panel-active .sign-in-container {
-	transform: translateX(100%);
-}
-
-.sign-up-container {
-	left: 0;
-	width: 50%;
-	opacity: 0;
-	z-index: 1;
-}
-
-.container.right-panel-active .sign-up-container {
-	transform: translateX(100%);
-	opacity: 1;
-	z-index: 5;
-	animation: show 0.6s;
-}
-
-@keyframes show {
-	0%, 49.99% {
-		opacity: 0;
-		z-index: 1;
-	}
-
-	50%, 100% {
-		opacity: 1;
-		z-index: 5;
-	}
-}
-
-.overlay-container {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 50%;
-	height: 100%;
-	overflow: hidden;
-	transition: transform 0.6s ease-in-out;
-	z-index: 100;
-}
-
-.container.right-panel-active .overlay-container{
-	transform: translateX(-100%);
-}
-
-.overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 0 0;
-	color: #FFFFFF;
-	position: relative;
-	left: -100%;
-	height: 100%;
-	width: 200%;
-  	transform: translateX(0);
-	transition: transform 0.6s ease-in-out;
-}
-
-.container.right-panel-active .overlay {
-  	transform: translateX(50%);
-}
-
-.overlay-panel {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 40px;
-	text-align: center;
-	top: 0;
-	height: 100%;
-	width: 50%;
-	transform: translateX(0);
-	transition: transform 0.6s ease-in-out;
-}
-
-.overlay-left {
-	transform: translateX(-20%);
-}
-
-.container.right-panel-active .overlay-left {
-	transform: translateX(0);
-}
-
-.overlay-right {
-	right: 0;
-	transform: translateX(0);
-}
-
-.container.right-panel-active .overlay-right {
-	transform: translateX(20%);
-}
-
-.social-container {
-	margin: 20px 0;
-}
-
-.social-container a {
-	border: 1px solid #DDDDDD;
-	border-radius: 50%;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0 5px;
-	height: 40px;
-	width: 40px;
-}
-
-footer {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
-}
-
-footer p {
-    margin: 10px 0;
-}
-
-footer i {
-    color: red;
-}
-
-footer a {
-    color: #3c97bf;
-    text-decoration: none;
-}
+      .bg-glass {
+        background-color: hsla(0, 0%, 100%, 0.9) !important;
+        backdrop-filter: saturate(200%) blur(25px);
+      }
     </style>
-</head>
-<body>
-<div class="container" id="container">
-	<div class="form-container sign-up-container">
-		<form action="{{ route('register') }}" method="POST">
-            @csrf
-			<h1>Create Account</h1>
-			<input type="text" name="name" placeholder="Name" />
-			<input type="email" name="email" placeholder="Email" />
-			<input type="password" name="password" placeholder="Password" />
-            <input type="password" name="password_confirmation" placeholder="Password confirmation" />
-            <select name="country" id="country" class="form-control">
-                <option value="" selected disabled>Choose your country</option>
-                <option value="Indonesia">Indonesia</option>
-                <option value="Brunei Darussalam">Brunei Darussalam</option>
-            </select>
-			<button type="submit" class="mt-2">Sign Up</button>
-		</form>
-	</div>
-	<div class="form-container sign-in-container">
-		<form action="{{ route('login') }}" method="POST">
-            @csrf
-			<h1>Sign in</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>or use your account</span>
-			<input type="email" name="email" placeholder="Email" />
-			<input type="password" name="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
-			<button type="submit">Sign In</button>
-		</form>
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
-			</div>
-		</div>
-	</div>
-</div>
 
-<footer>
-	<p>
-		Created with <i class="fa fa-heart"></i> by
-		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-		- Read how I created this and how you can join the challenge
-		<a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
-	</p>
-</footer>
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+      <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+            The best offer <br />
+            <span style="color: hsl(218, 81%, 75%)">for your business</span>
+          </h1>
+          <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Temporibus, expedita iusto veniam atque, magni tempora mollitia
+            dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+            ab ipsum nisi dolorem modi. Quos?
+          </p>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-<script>
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
-    const container = document.getElementById('container');
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+          <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
 
-    signUpButton.addEventListener('click', () => {
-        container.classList.add("right-panel-active");
-    });
+          <div class="card bg-glass">
+            <div class="card-body px-4 py-5 px-md-5">
+              <form action="{{ route('login') }}" method="POST">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                @csrf
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="email" name="email" class="form-control" />
+                  <label class="form-label" for="email">Email address</label>
+                </div>
 
-    signInButton.addEventListener('click', () => {
-        container.classList.remove("right-panel-active");
-    });
-</script>
-</body>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="password" name="password" class="form-control" />
+                  <label class="form-label" for="password">Password</label>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                  Sign up
+                </button>
+
+                <!-- Register buttons -->
+                <div class="text-center">
+                  <p>or sign up with:</p>
+                  <a href="{{ route('register') }}">Register</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
 </html>

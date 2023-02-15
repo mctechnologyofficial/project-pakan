@@ -2,10 +2,10 @@
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
-                <h5 class="text-white mb-4">Our Office</h5>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <h5 class="text-white mb-4">Kantor kami</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Jl. MahirFarm, Cijeruk, Bogor</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+62 895 322290525</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>mahir@farm.com</p>
                 <div class="d-flex pt-3">
                     <a class="btn btn-square btn-secondary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-square btn-secondary rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
@@ -22,12 +22,12 @@
                 <a class="btn btn-link" href="">Support</a>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h5 class="text-white mb-4">Business Hours</h5>
-                <p class="mb-1">Monday - Friday</p>
+                <h5 class="text-white mb-4">Buka</h5>
+                <p class="mb-1">Senin - Jumat</p>
                 <h6 class="text-light">09:00 am - 07:00 pm</h6>
-                <p class="mb-1">Saturday</p>
+                <p class="mb-1">Sabtu</p>
                 <h6 class="text-light">09:00 am - 12:00 pm</h6>
-                <p class="mb-1">Sunday</p>
+                <p class="mb-1">Minggu</p>
                 <h6 class="text-light">Closed</h6>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -49,7 +49,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                &copy; <a class="fw-semi-bold" href="#">Your Site Name</a>, All Right Reserved.
+                &copy; <a class="fw-semi-bold" href="#">mahirfarm.com</a>, All Right Reserved.
             </div>
             <div class="col-md-6 text-center text-md-end">
                 <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use PHPUnit\Framework\Constraint\IsFalse;
 
 class IndoTransaksiController extends Controller
 {
@@ -59,6 +60,8 @@ class IndoTransaksiController extends Controller
             'total_price'       => $request->totalprice
         ]);
 
+        Session::put('orderid', $transaksi->id);
+
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -85,21 +88,31 @@ class IndoTransaksiController extends Controller
 
         Session::put('snapToken', $snapToken);
 
+        $transaksi = Transaction::find($transaksi->id);
+        $transaksi->update(['status' => 'Paid']);
+
         return redirect()->route('invoice-indo', $transaksi->id);
     }
 
-    // public function invoice($id)
-    // {
-    //     $transaksi = Transaction::find($id);
-    //     $product = Product::find($transaksi->product_id);
-    //     return view('landing.indo.invoice', compact(['transaksi', 'product']));
-    // }
+    public function callback(Request $request)
+    {
+        $orderid = Session::get('orderid');
+        $serverKey = config('midtrans.server_key');
+        $hashed = hash('sha512', $request->order_id.$request->status_code.$request->gross_amount.$serverKey);
+
+        if( $hashed == $request->signature_key ){
+            if( $request->transaction_status == 'capture' ) {
+                // $transaksi = Transaction::find($orderid);
+                // $transaksi->update(['status' => 'Paid']);
+            }
+        }
+    }
 
     public function invoice($id)
     {
         $transaksi = Transaction::find($id);
         $productIndo = Product::find($transaksi->product_id);
-        return view('landing.indo.invoice', compact(['transaksi', 'productIndo']));
+        return view('landing.indo.invoice1', compact(['transaksi', 'productIndo']));
     }
 
     /**

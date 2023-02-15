@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('transaction_id');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
 
             $table->foreign('transaction_id')->references('id')->on('transactions');

@@ -17,7 +17,7 @@
                                     <img src="{{ $productIndo->image == null ? asset('landing/img/product-3.jpg') : asset($productIndo->image) }}" alt="image" class="img-thumbnail w-25">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
+                                    <label for="exampleFormControlInput1" class="form-label">Berkurban atas Nama</label>
                                     <input type="text" name="customer_name" class="form-control" id="exampleFormControlInput1" />
                                 </div>
                                 <div class="mb-3">

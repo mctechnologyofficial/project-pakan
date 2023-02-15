@@ -33,6 +33,8 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+
+
 // force logout routes, temporary for debugging
 Route::get('/force/logout', function (Request $request) {
     Auth::guard('web')->logout();
@@ -66,6 +68,7 @@ Route::group(['middleware' => ['role:User']], function () {
         Route::get('{id}/produk', 'show')->name('produk');
         Route::get('/{id}/invoice-indo', 'invoice')->name('invoice-indo');
         Route::post('/store/transaksi', 'store')->name('store');
+        // Route::post('/midtrans-callback', 'callback');
     });
 });
 
@@ -95,6 +98,10 @@ Route::group(['middleware' => ['role:Admin']], function() {
             Route::get('/history', 'show')->name('report.show');
         });
     });
+});
+
+Route::get('invoice1', function() {
+    return view('landing.indo.invoice1');
 });
 
 Auth::routes();

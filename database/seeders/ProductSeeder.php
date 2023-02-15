@@ -16,34 +16,34 @@ class ProductSeeder extends Seeder
     public function run()
     {
         Product::create([
-            'name'          => 'Brunei 1',
+            'name'          => 'Domba Premium',
             'price'         => '50000',
             'description'   => 'mantapp tenannnnn',
-            'image'         => '/storage/product/me.jpeg',
+            'image'         => '/storage/product/domba1.jpg',
             'country'       => 'Brunei Darussalam',
         ]);
 
         Product::create([
-            'name'          => 'Brunei 2',
+            'name'          => 'Domba Superior',
             'price'         => '150000',
             'description'   => 'oke',
-            'image'         => '/storage/product/q.jpg',
+            'image'         => '/storage/product/domba5.jfif',
             'country'       => 'Brunei Darussalam',
         ]);
 
         Product::create([
-            'name'          => 'Indonesia 1',
-            'price'         => '50000',
+            'name'          => 'Domba Premium',
+            'price'         => '500',
             'description'   => 'mantapp tenannnnn',
-            'image'         => '/storage/product/me.jpeg',
+            'image'         => '/storage/product/domba1.jpg',
             'country'       => 'Indonesia',
         ]);
 
         Product::create([
-            'name'          => 'Indonesia 2',
-            'price'         => '150000',
+            'name'          => 'Domba Superior',
+            'price'         => '1000',
             'description'   => 'oke',
-            'image'         => '/storage/product/q.jpg',
+            'image'         => '/storage/product/domba5.jfif',
             'country'       => 'Indonesia',
         ]);
     }

@@ -21,7 +21,7 @@
     <div class="container">
         <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <p class="section-title bg-white text-center text-primary px-3">Gallery</p>
-            <h1 class="mb-5">Galery Pengiriman Brunei</h1>
+            <h1 class="mb-5">Galery Pengkurbanan Brunei</h1>
         </div>
         <div class="row g-0">
             <div class="col-lg-12">

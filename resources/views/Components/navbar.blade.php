@@ -10,14 +10,17 @@
             <a href="{{ route('home') }}" class="nav-item nav-link {{ Route::currentRouteNamed('home') ? 'active' : '' }}">Home</a>
             @auth
                 <a href="produk" class="nav-item nav-link">Produk</a>
-                <a href="{{ route('transaction.invoice') }}" class="nav-item nav-link {{ Route::currentRouteNamed('transaction.*') ? 'active' : '' }}">Invoice</a>
+                {{-- @unless (Auth::user()->country == "Indonesia") --}}
+                    <a href="{{ route('transaction.invoice') }}" class="nav-item nav-link {{ Route::currentRouteNamed('transaction.*') ? 'active' : '' }}">Invoice</a>
+                {{-- @endunless --}}
                 <a href="{{ route('user.report.index') }}" class="nav-item nav-link">Report</a>
                 <a href="kontak" class="nav-item nav-link">Support</a>
             @endauth
+
             @guest
-                <a href="service.html" class="nav-item nav-link">About Us</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <a href="product.html" class="nav-item nav-link">Products</a>
+                <a href="#aboutus" class="nav-item nav-link">About Us</a>
+                <a href="#produk" class="nav-item nav-link">Produk</a>
+                <a href="#support" class="nav-item nav-link">Support</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu bg-light m-0">
@@ -43,3 +46,5 @@
         </div>
     </div>
 </nav>
+
+
